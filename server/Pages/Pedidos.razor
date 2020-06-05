@@ -1,0 +1,52 @@
+﻿@page "/pedidos"
+@layout MainLayout
+@inherits C4G.Pages.PedidosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Pedidos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getPedidosResult" TItem="C4G.Models.C4G.Pedido" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="id_pedido" Title="Id Pedido">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="order_date" FormatString="{0:MM/dd/yyyy}" Title="Order Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="end_date" FormatString="{0:MM/dd/yyyy}" Title="End Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="start_date" FormatString="{0:MM/dd/yyyy}" Title="Start Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="id_servico" SortProperty="Servico.designacao" FilterProperty="Servico.designacao" Title="Servico">
+              <Template Context="data">
+              @(data.Servico?.designacao)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Property="id_pessoa" SortProperty="Pessoa.nome" FilterProperty="Pessoa.nome" Title="Pessoa">
+              <Template Context="data">
+              @(data.Pessoa?.nome)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Pedido" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="c4GModelsC4GPedido">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, c4GModelsC4GPedido))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

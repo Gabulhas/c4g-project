@@ -1,0 +1,593 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Designacao Pt",
+                              "component": "designacao_PT",
+                              "name": "designacao_PTLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "designacao_PT",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.designacao_PT}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "designacao_PTRequiredValidator",
+                              "component": "designacao_PT",
+                              "text": "designacao_PT is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Designacao En",
+                              "component": "designacao_EN",
+                              "name": "designacao_ENLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "designacao_EN",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.designacao_EN}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "designacao_ENRequiredValidator",
+                              "component": "designacao_EN",
+                              "text": "designacao_EN is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nivel",
+                              "component": "nivel",
+                              "name": "nivelLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "nivel",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.nivel}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "nivelRequiredValidator",
+                              "component": "nivel",
+                              "text": "nivel is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tipo Produto",
+                              "component": "tipo_produto",
+                              "name": "tipo_produtoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "tipo_produto",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.tipo_produto}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "tipo_produtoRequiredValidator",
+                              "component": "tipo_produto",
+                              "text": "tipo_produto is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Webpage",
+                              "component": "webpage",
+                              "name": "webpageLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 30,
+                              "type": "textbox",
+                              "name": "webpage",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.webpage}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "webpageRequiredValidator",
+                              "component": "webpage",
+                              "text": "webpage is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Observacoes",
+                              "component": "observacoes",
+                              "name": "observacoesLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 1000,
+                              "type": "textbox",
+                              "name": "observacoes",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.observacoes}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "observacoesRequiredValidator",
+                              "component": "observacoes",
+                              "text": "observacoes is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Custo Unitario",
+                              "component": "custo_unitario",
+                              "name": "custo_unitarioLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "double",
+                              "type": "numeric",
+                              "name": "custo_unitario",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.custo_unitario}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "custo_unitarioRequiredValidator",
+                              "component": "custo_unitario",
+                              "text": "custo_unitario is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Laboratorio",
+                              "component": "id_lab",
+                              "name": "id_labLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getLaboratoriosResult}",
+                              "textProperty": "designacao",
+                              "valueProperty": "id_lab",
+                              "placeholder": "Choose Laboratorio",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_lab",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.id_lab}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_labRequiredValidator",
+                              "component": "id_lab",
+                              "text": "id_lab is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Recurso",
+                              "component": "id_recursos",
+                              "name": "id_recursosLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getRecursosResult}",
+                              "textProperty": "id_recursos",
+                              "valueProperty": "id_recursos",
+                              "placeholder": "Choose Recurso",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_recursos",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${produto.id_recursos}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_recursosRequiredValidator",
+                              "component": "id_recursos",
+                              "text": "id_recursos is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Produto",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateProduto",
+                        "parameters": [
+                          {
+                            "name": "id_recursos",
+                            "value": "${parameters.id_recursos}"
+                          },
+                          {
+                            "name": "Produto",
+                            "value": "${produto}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${produto}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Produto",
+                  "data": "${produto}",
+                  "visible": "${produto != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getProdutoByid_recursos",
+        "parameters": [
+          {
+            "name": "id_recursos",
+            "value": "${parameters.id_recursos}"
+          }
+        ],
+        "then": [
+          {
+            "name": "produto",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Produto"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getLaboratorios",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getLaboratoriosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Laboratorio>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getRecursos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getRecursosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Recurso>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Produto",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

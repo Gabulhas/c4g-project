@@ -1,0 +1,92 @@
+﻿@page "/add-pedido"
+@layout MainLayout
+@inherits C4G.Pages.AddPedidoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@pedido" Visible="@(pedido != null)" TItem="C4G.Models.C4G.Pedido" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Order Date" Component="order_date" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(pedido.order_date)" Name="Order_date">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="Order_date" Text="order_date is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="End Date" Component="end_date" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(pedido.end_date)" Name="End_date">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="End_date" Text="end_date is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Start Date" Component="start_date" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(pedido.start_date)" Name="Start_date">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="Start_date" Text="start_date is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Servico" Component="id_servico" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getServicosResult" TextProperty="designacao" ValueProperty="id_servico" Placeholder="Choose Servico" style="display: block; width: 100%" @bind-Value="@(pedido.id_servico)" Name="Id_servico">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_servico" Text="id_servico is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Pessoa" Component="id_pessoa" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getPessoasResult" TextProperty="nome" ValueProperty="id_pessoa" Placeholder="Choose Pessoa" style="display: block; width: 100%" @bind-Value="@(pedido.id_pessoa)" Name="Id_pessoa">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_pessoa" Text="id_pessoa is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

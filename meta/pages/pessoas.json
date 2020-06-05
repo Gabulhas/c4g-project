@@ -1,0 +1,183 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Pessoas"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-pessoa",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getPessoasResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_pessoa",
+                            "value": "${event.id_pessoa}"
+                          }
+                        ],
+                        "path": "edit-pessoa",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "id_pessoa",
+                      "title": "Id Pessoa"
+                    },
+                    {
+                      "property": "nome",
+                      "title": "Nome"
+                    },
+                    {
+                      "property": "morada",
+                      "title": "Morada"
+                    },
+                    {
+                      "property": "email",
+                      "title": "Email"
+                    },
+                    {
+                      "property": "id_instituicao",
+                      "sortProperty": "Instituico.designacao",
+                      "filterProperty": "Instituico.designacao",
+                      "template": "${data.Instituico?.designacao}",
+                      "title": "Instituico"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Pessoa",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deletePessoa",
+                                "parameters": [
+                                  {
+                                    "name": "id_pessoa",
+                                    "value": "${data.id_pessoa}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.Pessoa"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getPessoas",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getPessoasResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Pessoa>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Pessoas",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

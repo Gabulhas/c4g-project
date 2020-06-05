@@ -1,0 +1,194 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Dados"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-dado",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getDadosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_recursos",
+                            "value": "${event.id_recursos}"
+                          }
+                        ],
+                        "path": "edit-dado",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "designacao_PT",
+                      "title": "Designacao PT"
+                    },
+                    {
+                      "property": "designacao_EN",
+                      "title": "Designacao EN"
+                    },
+                    {
+                      "property": "webpage",
+                      "title": "Webpage"
+                    },
+                    {
+                      "property": "observacoes",
+                      "title": "Observacoes"
+                    },
+                    {
+                      "property": "custo_unitario",
+                      "title": "Custo Unitario"
+                    },
+                    {
+                      "property": "id_lab",
+                      "sortProperty": "Laboratorio.designacao",
+                      "filterProperty": "Laboratorio.designacao",
+                      "template": "${data.Laboratorio?.designacao}",
+                      "title": "Laboratorio"
+                    },
+                    {
+                      "property": "id_recursos",
+                      "sortProperty": "Recurso.id_recursos",
+                      "filterProperty": "Recurso.id_recursos",
+                      "template": "${data.Recurso?.id_recursos}",
+                      "title": "Recurso"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Dado",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deleteDado",
+                                "parameters": [
+                                  {
+                                    "name": "id_recursos",
+                                    "value": "${data.id_recursos}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.Dado"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getDados",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getDadosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Dado>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Dados",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\BreiaLopes\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BreiaLopes\\.nuget\\packages"
+    ]
+  }
+}

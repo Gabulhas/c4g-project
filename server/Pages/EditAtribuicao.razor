@@ -1,0 +1,56 @@
+﻿@page "/edit-atribuicao/{id_atribuicao}"
+@layout MainLayout
+@inherits C4G.Pages.EditAtribuicaoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm TItem="C4G.Models.C4G.Atribuicao" Data="@atribuicao" Visible="@(atribuicao != null)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Recurso" Component="id_recursos" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getRecursosResult" TextProperty="id_recursos" ValueProperty="id_recursos" Placeholder="Choose Recurso" style="display: block; width: 100%" @bind-Value="@(atribuicao.id_recursos)" Name="Id_recursos">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_recursos" Text="id_recursos is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Servico" Component="id_servico" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getServicosResult" TextProperty="designacao" ValueProperty="id_servico" Placeholder="Choose Servico" style="display: block; width: 100%" @bind-Value="@(atribuicao.id_servico)" Name="Id_servico">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_servico" Text="id_servico is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

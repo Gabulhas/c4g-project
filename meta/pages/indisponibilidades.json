@@ -1,0 +1,192 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Indisponibilidades"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-indisponibilidade",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getIndisponibilidadesResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_pedido",
+                            "value": "${event.id_pedido}"
+                          },
+                          {
+                            "name": "id_recursos",
+                            "value": "${event.id_recursos}"
+                          }
+                        ],
+                        "path": "edit-indisponibilidade",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "start_date",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Start Date"
+                    },
+                    {
+                      "property": "end_date",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "End Date"
+                    },
+                    {
+                      "property": "id_pedido",
+                      "sortProperty": "Pedido.id_pedido",
+                      "filterProperty": "Pedido.id_pedido",
+                      "template": "${data.Pedido?.id_pedido}",
+                      "title": "Pedido"
+                    },
+                    {
+                      "property": "id_recursos",
+                      "sortProperty": "Recurso.id_recursos",
+                      "filterProperty": "Recurso.id_recursos",
+                      "template": "${data.Recurso?.id_recursos}",
+                      "title": "Recurso"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Indisponibilidade",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deleteIndisponibilidade",
+                                "parameters": [
+                                  {
+                                    "name": "id_pedido",
+                                    "value": "${data.id_pedido}"
+                                  },
+                                  {
+                                    "name": "id_recursos",
+                                    "value": "${data.id_recursos}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.Indisponibilidade"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getIndisponibilidades",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getIndisponibilidadesResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Indisponibilidade>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Indisponibilidades",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

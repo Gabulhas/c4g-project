@@ -1,0 +1,43 @@
+﻿@page "/servicos"
+@layout MainLayout
+@inherits C4G.Pages.ServicosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Servicos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getServicosResult" TItem="C4G.Models.C4G.Servico" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Servico" Property="id_servico" Title="Id Servico">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Servico" Property="designacao" Title="Designacao">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Servico" Property="supervisionador" SortProperty="Pessoa.nome" FilterProperty="Pessoa.nome" Title="Pessoa">
+              <Template Context="data">
+              @(data.Pessoa?.nome)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Servico" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="c4GModelsC4GServico">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, c4GModelsC4GServico))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

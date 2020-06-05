@@ -1,0 +1,58 @@
+﻿@page "/produtos"
+@layout MainLayout
+@inherits C4G.Pages.ProdutosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Produtos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getProdutosResult" TItem="C4G.Models.C4G.Produto" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="designacao_PT" Title="Designacao PT">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="designacao_EN" Title="Designacao EN">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="nivel" Title="Nivel">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="tipo_produto" Title="Tipo Produto">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="webpage" Title="Webpage">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="observacoes" Title="Observacoes">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="custo_unitario" Title="Custo Unitario">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="id_lab" SortProperty="Laboratorio.designacao" FilterProperty="Laboratorio.designacao" Title="Laboratorio">
+              <Template Context="data">
+              @(data.Laboratorio?.designacao)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Property="id_recursos" SortProperty="Recurso.id_recursos" FilterProperty="Recurso.id_recursos" Title="Recurso">
+              <Template Context="data">
+              @(data.Recurso?.id_recursos)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Produto" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="c4GModelsC4GProduto">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, c4GModelsC4GProduto))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

@@ -1,0 +1,236 @@
+﻿@page "/add-equipamento"
+@layout MainLayout
+@inherits C4G.Pages.AddEquipamentoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@equipamento" Visible="@(equipamento != null)" TItem="C4G.Models.C4G.Equipamento" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Designacao Pt" Component="designacao_PT" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(equipamento.designacao_PT)" Name="Designacao_PT">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Designacao_PT" Text="designacao_PT is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Designacao En" Component="designacao_EN" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(equipamento.designacao_EN)" Name="Designacao_EN">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Designacao_EN" Text="designacao_EN is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Registo" Component="data_registo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(equipamento.data_registo)" Name="Data_registo">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="Data_registo" Text="data_registo is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Num Registo" Component="num_registo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(equipamento.num_registo)" Name="Num_registo">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Num_registo" Text="num_registo is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Observacoes" Component="observacoes" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="1000" style="display: block; width: 100%" @bind-Value="@(equipamento.observacoes)" Name="Observacoes">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Observacoes" Text="observacoes is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Foto Equipamento" Component="foto_equipamento" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(equipamento.foto_equipamento)" Name="Foto_equipamento">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Foto_equipamento" Text="foto_equipamento is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Unidade Investigacao" Component="unidade_investigacao" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(equipamento.unidade_investigacao)" Name="Unidade_investigacao">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Unidade_investigacao" Text="unidade_investigacao is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Marca" Component="marca" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="20" style="display: block; width: 100%" @bind-Value="@(equipamento.marca)" Name="Marca">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Marca" Text="marca is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Modelo" Component="modelo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="30" style="display: block; width: 100%" @bind-Value="@(equipamento.modelo)" Name="Modelo">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Modelo" Text="modelo is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Num Serie" Component="num_serie" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(equipamento.num_serie)" Name="Num_serie">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Num_serie" Text="num_serie is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Garantia" Component="garantia" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(equipamento.garantia)" Name="Garantia">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Garantia" Text="garantia is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tipo Uso" Component="tipo_uso" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="20" style="display: block; width: 100%" @bind-Value="@(equipamento.tipo_uso)" Name="Tipo_uso">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Tipo_uso" Text="tipo_uso is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Condicao Uso" Component="condicao_uso" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="20" style="display: block; width: 100%" @bind-Value="@(equipamento.condicao_uso)" Name="Condicao_uso">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Condicao_uso" Text="condicao_uso is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Mobilidade" Component="mobilidade" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="10" style="display: block; width: 100%" @bind-Value="@(equipamento.mobilidade)" Name="Mobilidade">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Mobilidade" Text="mobilidade is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Custo Unitario" Component="custo_unitario" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(equipamento.custo_unitario)" Name="Custo_unitario">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Custo_unitario" Text="custo_unitario is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Laboratorio" Component="id_lab" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getLaboratoriosResult" TextProperty="designacao" ValueProperty="id_lab" Placeholder="Choose Laboratorio" style="display: block; width: 100%" @bind-Value="@(equipamento.id_lab)" Name="Id_lab">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_lab" Text="id_lab is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Recurso" Component="id_recursos" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getRecursosResult" TextProperty="id_recursos" ValueProperty="id_recursos" Placeholder="Choose Recurso" style="display: block; width: 100%" @bind-Value="@(equipamento.id_recursos)" Name="Id_recursos">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_recursos" Text="id_recursos is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

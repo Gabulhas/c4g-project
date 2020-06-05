@@ -1,0 +1,333 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Designacao",
+                              "component": "designacao",
+                              "name": "designacaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "designacao",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${laboratorio.designacao}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "designacaoRequiredValidator",
+                              "component": "designacao",
+                              "text": "designacao is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Acronimo",
+                              "component": "acronimo",
+                              "name": "acronimoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 10,
+                              "type": "textbox",
+                              "name": "acronimo",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${laboratorio.acronimo}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "acronimoRequiredValidator",
+                              "component": "acronimo",
+                              "text": "acronimo is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Grupo",
+                              "component": "grupo",
+                              "name": "grupoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "grupo",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${laboratorio.grupo}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "grupoRequiredValidator",
+                              "component": "grupo",
+                              "text": "grupo is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Instituico",
+                              "component": "id_instituicao",
+                              "name": "id_instituicaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getInstituicosResult}",
+                              "textProperty": "designacao",
+                              "valueProperty": "id_instituicao",
+                              "placeholder": "Choose Instituico",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_instituicao",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${laboratorio.id_instituicao}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_instituicaoRequiredValidator",
+                              "component": "id_instituicao",
+                              "text": "id_instituicao is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Laboratorio",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateLaboratorio",
+                        "parameters": [
+                          {
+                            "name": "id_lab",
+                            "value": "${parameters.id_lab}"
+                          },
+                          {
+                            "name": "Laboratorio",
+                            "value": "${laboratorio}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${laboratorio}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Laboratorio",
+                  "data": "${laboratorio}",
+                  "visible": "${laboratorio != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getLaboratorioByid_lab",
+        "parameters": [
+          {
+            "name": "id_lab",
+            "value": "${parameters.id_lab}"
+          }
+        ],
+        "then": [
+          {
+            "name": "laboratorio",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Laboratorio"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getInstituicos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getInstituicosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Instituico>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Laboratorio",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

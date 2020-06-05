@@ -1,0 +1,182 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Recursos Humanos"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-recursos-humano",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getRecursosHumanosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_recursos",
+                            "value": "${event.id_recursos}"
+                          }
+                        ],
+                        "path": "edit-recursos-humano",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "nome",
+                      "title": "Nome"
+                    },
+                    {
+                      "property": "funcao",
+                      "title": "Funcao"
+                    },
+                    {
+                      "property": "id_lab",
+                      "sortProperty": "Laboratorio.designacao",
+                      "filterProperty": "Laboratorio.designacao",
+                      "template": "${data.Laboratorio?.designacao}",
+                      "title": "Laboratorio"
+                    },
+                    {
+                      "property": "id_recursos",
+                      "sortProperty": "Recurso.id_recursos",
+                      "filterProperty": "Recurso.id_recursos",
+                      "template": "${data.Recurso?.id_recursos}",
+                      "title": "Recurso"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete RecursosHumano",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deleteRecursosHumano",
+                                "parameters": [
+                                  {
+                                    "name": "id_recursos",
+                                    "value": "${data.id_recursos}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.RecursosHumano"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getRecursosHumanos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getRecursosHumanosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.RecursosHumano>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Recursos Humanos",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

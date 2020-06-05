@@ -1,0 +1,193 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Pedidos"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-pedido",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getPedidosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_pedido",
+                            "value": "${event.id_pedido}"
+                          }
+                        ],
+                        "path": "edit-pedido",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "id_pedido",
+                      "title": "Id Pedido"
+                    },
+                    {
+                      "property": "order_date",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Order Date"
+                    },
+                    {
+                      "property": "end_date",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "End Date"
+                    },
+                    {
+                      "property": "start_date",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Start Date"
+                    },
+                    {
+                      "property": "id_servico",
+                      "sortProperty": "Servico.designacao",
+                      "filterProperty": "Servico.designacao",
+                      "template": "${data.Servico?.designacao}",
+                      "title": "Servico"
+                    },
+                    {
+                      "property": "id_pessoa",
+                      "sortProperty": "Pessoa.nome",
+                      "filterProperty": "Pessoa.nome",
+                      "template": "${data.Pessoa?.nome}",
+                      "title": "Pessoa"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Pedido",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deletePedido",
+                                "parameters": [
+                                  {
+                                    "name": "id_pedido",
+                                    "value": "${data.id_pedido}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.Pedido"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getPedidos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getPedidosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Pedido>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Pedidos",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

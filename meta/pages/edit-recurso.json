@@ -1,0 +1,120 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Recurso",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateRecurso",
+                        "parameters": [
+                          {
+                            "name": "id_recursos",
+                            "value": "${parameters.id_recursos}"
+                          },
+                          {
+                            "name": "Recurso",
+                            "value": "${recurso}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${recurso}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Recurso",
+                  "data": "${recurso}",
+                  "visible": "${recurso != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getRecursoByid_recursos",
+        "parameters": [
+          {
+            "name": "id_recursos",
+            "value": "${parameters.id_recursos}"
+          }
+        ],
+        "then": [
+          {
+            "name": "recurso",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Recurso"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Recurso",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

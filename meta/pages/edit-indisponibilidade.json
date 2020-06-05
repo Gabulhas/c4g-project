@@ -1,0 +1,358 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Start Date",
+                              "component": "start_date",
+                              "name": "start_dateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "start_date",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${indisponibilidade.start_date}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "start_dateRequiredValidator",
+                              "component": "start_date",
+                              "text": "start_date is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "End Date",
+                              "component": "end_date",
+                              "name": "end_dateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "end_date",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${indisponibilidade.end_date}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "end_dateRequiredValidator",
+                              "component": "end_date",
+                              "text": "end_date is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Pedido",
+                              "component": "id_pedido",
+                              "name": "id_pedidoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getPedidosResult}",
+                              "textProperty": "id_pedido",
+                              "valueProperty": "id_pedido",
+                              "placeholder": "Choose Pedido",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_pedido",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${indisponibilidade.id_pedido}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_pedidoRequiredValidator",
+                              "component": "id_pedido",
+                              "text": "id_pedido is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Recurso",
+                              "component": "id_recursos",
+                              "name": "id_recursosLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getRecursosResult}",
+                              "textProperty": "id_recursos",
+                              "valueProperty": "id_recursos",
+                              "placeholder": "Choose Recurso",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_recursos",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${indisponibilidade.id_recursos}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_recursosRequiredValidator",
+                              "component": "id_recursos",
+                              "text": "id_recursos is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Indisponibilidade",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateIndisponibilidade",
+                        "parameters": [
+                          {
+                            "name": "id_pedido",
+                            "value": "${parameters.id_pedido}"
+                          },
+                          {
+                            "name": "id_recursos",
+                            "value": "${parameters.id_recursos}"
+                          },
+                          {
+                            "name": "Indisponibilidade",
+                            "value": "${indisponibilidade}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${indisponibilidade}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Indisponibilidade",
+                  "data": "${indisponibilidade}",
+                  "visible": "${indisponibilidade != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getIndisponibilidadeById_pedidoAndId_recursos",
+        "parameters": [
+          {
+            "name": "id_pedido",
+            "value": "${parameters.id_pedido}"
+          },
+          {
+            "name": "id_recursos",
+            "value": "${parameters.id_recursos}"
+          }
+        ],
+        "then": [
+          {
+            "name": "indisponibilidade",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Indisponibilidade"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getPedidos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getPedidosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Pedido>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getRecursos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getRecursosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Recurso>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Indisponibilidade",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

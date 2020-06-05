@@ -1,0 +1,333 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nome",
+                              "component": "nome",
+                              "name": "nomeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "nome",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${recursoshumano.nome}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "nomeRequiredValidator",
+                              "component": "nome",
+                              "text": "nome is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Funcao",
+                              "component": "funcao",
+                              "name": "funcaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "funcao",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${recursoshumano.funcao}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "funcaoRequiredValidator",
+                              "component": "funcao",
+                              "text": "funcao is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Laboratorio",
+                              "component": "id_lab",
+                              "name": "id_labLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getLaboratoriosResult}",
+                              "textProperty": "designacao",
+                              "valueProperty": "id_lab",
+                              "placeholder": "Choose Laboratorio",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_lab",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${recursoshumano.id_lab}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_labRequiredValidator",
+                              "component": "id_lab",
+                              "text": "id_lab is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Recurso",
+                              "component": "id_recursos",
+                              "name": "id_recursosLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getRecursosResult}",
+                              "textProperty": "id_recursos",
+                              "valueProperty": "id_recursos",
+                              "placeholder": "Choose Recurso",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_recursos",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${recursoshumano.id_recursos}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_recursosRequiredValidator",
+                              "component": "id_recursos",
+                              "text": "id_recursos is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new RecursosHumano!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.createRecursosHumano",
+                        "parameters": [
+                          {
+                            "name": "RecursosHumano",
+                            "value": "${recursoshumano}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${recursoshumano}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${recursoshumano}",
+                  "visible": "${recursoshumano != null}",
+                  "itemType": "C4G.Models.C4G.RecursosHumano"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getLaboratorios",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getLaboratoriosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Laboratorio>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getRecursos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getRecursosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Recurso>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "recursoshumano",
+        "type": "set",
+        "value": "new C4G.Models.C4G.RecursosHumano(){}",
+        "valueType": "C4G.Models.C4G.RecursosHumano"
+      }
+    ]
+  },
+  "name": "Add Recursos Humano",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

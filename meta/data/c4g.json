@@ -1,0 +1,3221 @@
+{
+  "info": {
+    "title": "c4g",
+    "x-type": "odata",
+    "x-connector": "mssql",
+    "x-connector-version": 15
+  },
+  "definitions": {
+    "Atribuicao": {
+      "x-table": "dbo.atribuicao",
+      "resource": "Atribuicaos",
+      "required": [
+        "id_recursos",
+        "id_servico"
+      ],
+      "properties": {
+        "id_atribuicao": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Atribuicaos"
+          }
+        },
+        "Servico": {
+          "type": "object",
+          "$ref": "#/definitions/Servico"
+        },
+        "id_servico": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "servicos",
+            "parentEntityType": "Servico",
+            "type": "Servico",
+            "principalKey": "id_servico",
+            "name": "Servico",
+            "textProperty": "designacao",
+            "navigationProperty": "Atribuicaos"
+          }
+        }
+      }
+    },
+    "Dado": {
+      "x-table": "dbo.dados",
+      "resource": "Dados",
+      "required": [
+        "designacao_PT",
+        "designacao_EN",
+        "webpage",
+        "observacoes",
+        "custo_unitario",
+        "id_lab",
+        "id_recursos"
+      ],
+      "properties": {
+        "designacao_PT": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "designacao_EN": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "webpage": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "observacoes": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 1000
+        },
+        "custo_unitario": {
+          "x-nullable": false,
+          "type": "number",
+          "format": "double"
+        },
+        "Laboratorio": {
+          "type": "object",
+          "$ref": "#/definitions/Laboratorio"
+        },
+        "id_lab": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "laboratorios",
+            "parentEntityType": "Laboratorio",
+            "type": "Laboratorio",
+            "principalKey": "id_lab",
+            "name": "Laboratorio",
+            "textProperty": "designacao",
+            "navigationProperty": "Dados"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Dados"
+          }
+        }
+      }
+    },
+    "Equipamento": {
+      "x-table": "dbo.equipamentos",
+      "resource": "Equipamentos",
+      "required": [
+        "designacao_PT",
+        "designacao_EN",
+        "data_registo",
+        "num_registo",
+        "observacoes",
+        "foto_equipamento",
+        "unidade_investigacao",
+        "marca",
+        "modelo",
+        "num_serie",
+        "garantia",
+        "tipo_uso",
+        "condicao_uso",
+        "mobilidade",
+        "custo_unitario",
+        "id_lab",
+        "id_recursos"
+      ],
+      "properties": {
+        "designacao_PT": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "designacao_EN": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "data_registo": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "num_registo": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "observacoes": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 1000
+        },
+        "foto_equipamento": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "unidade_investigacao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "marca": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 20
+        },
+        "modelo": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "num_serie": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "garantia": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "tipo_uso": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 20
+        },
+        "condicao_uso": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 20
+        },
+        "mobilidade": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "custo_unitario": {
+          "x-nullable": false,
+          "type": "number",
+          "format": "double"
+        },
+        "Laboratorio": {
+          "type": "object",
+          "$ref": "#/definitions/Laboratorio"
+        },
+        "id_lab": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "laboratorios",
+            "parentEntityType": "Laboratorio",
+            "type": "Laboratorio",
+            "principalKey": "id_lab",
+            "name": "Laboratorio",
+            "textProperty": "designacao",
+            "navigationProperty": "Equipamentos"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Equipamentos"
+          }
+        }
+      }
+    },
+    "Formaco": {
+      "x-table": "dbo.formacoes",
+      "resource": "Formacos",
+      "required": [
+        "designacao_PT",
+        "designacao_EN",
+        "tipo_formacao",
+        "custo_unitario",
+        "observacoes",
+        "id_lab",
+        "id_recursos"
+      ],
+      "properties": {
+        "designacao_PT": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "designacao_EN": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "tipo_formacao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "custo_unitario": {
+          "x-nullable": false,
+          "type": "number",
+          "format": "double"
+        },
+        "observacoes": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 1000
+        },
+        "Laboratorio": {
+          "type": "object",
+          "$ref": "#/definitions/Laboratorio"
+        },
+        "id_lab": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "laboratorios",
+            "parentEntityType": "Laboratorio",
+            "type": "Laboratorio",
+            "principalKey": "id_lab",
+            "name": "Laboratorio",
+            "textProperty": "designacao",
+            "navigationProperty": "Formacos"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Formacos"
+          }
+        }
+      }
+    },
+    "Indisponibilidade": {
+      "x-table": "dbo.indisponibilidade",
+      "resource": "Indisponibilidades",
+      "required": [
+        "start_date",
+        "end_date",
+        "id_pedido",
+        "id_recursos"
+      ],
+      "properties": {
+        "start_date": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "end_date": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "Pedido": {
+          "type": "object",
+          "$ref": "#/definitions/Pedido"
+        },
+        "id_pedido": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "pedido",
+            "parentEntityType": "Pedido",
+            "type": "Pedido",
+            "principalKey": "id_pedido",
+            "name": "Pedido",
+            "textProperty": "id_pedido",
+            "navigationProperty": "Indisponibilidades"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Indisponibilidades"
+          }
+        }
+      }
+    },
+    "Instituico": {
+      "x-table": "dbo.instituicoes",
+      "resource": "Instituicos",
+      "required": [
+        "designacao",
+        "acronimo"
+      ],
+      "properties": {
+        "id_instituicao": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Instituico",
+              "name": "Pessoas",
+              "type": "Pessoa"
+            },
+            {
+              "inversePropertyName": "Instituico",
+              "name": "Laboratorios",
+              "type": "Laboratorio"
+            }
+          ]
+        },
+        "designacao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "acronimo": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "Pessoas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pessoa"
+          }
+        },
+        "Laboratorios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Laboratorio"
+          }
+        }
+      }
+    },
+    "Laboratorio": {
+      "x-table": "dbo.laboratorios",
+      "resource": "Laboratorios",
+      "required": [
+        "designacao",
+        "acronimo",
+        "grupo",
+        "id_instituicao"
+      ],
+      "properties": {
+        "id_lab": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Laboratorio",
+              "name": "Equipamentos",
+              "type": "Equipamento"
+            },
+            {
+              "inversePropertyName": "Laboratorio",
+              "name": "Dados",
+              "type": "Dado"
+            },
+            {
+              "inversePropertyName": "Laboratorio",
+              "name": "RecursosHumanos",
+              "type": "RecursosHumano"
+            },
+            {
+              "inversePropertyName": "Laboratorio",
+              "name": "Formacos",
+              "type": "Formaco"
+            },
+            {
+              "inversePropertyName": "Laboratorio",
+              "name": "Produtos",
+              "type": "Produto"
+            }
+          ]
+        },
+        "designacao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "acronimo": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "grupo": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "Instituico": {
+          "type": "object",
+          "$ref": "#/definitions/Instituico"
+        },
+        "id_instituicao": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "instituicoes",
+            "parentEntityType": "Instituico",
+            "type": "Instituico",
+            "principalKey": "id_instituicao",
+            "name": "Instituico",
+            "textProperty": "designacao",
+            "navigationProperty": "Laboratorios"
+          }
+        },
+        "Equipamentos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Equipamento"
+          }
+        },
+        "Dados": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dado"
+          }
+        },
+        "RecursosHumanos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecursosHumano"
+          }
+        },
+        "Formacos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Formaco"
+          }
+        },
+        "Produtos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Produto"
+          }
+        }
+      }
+    },
+    "Pedido": {
+      "x-table": "dbo.pedido",
+      "resource": "Pedidos",
+      "required": [
+        "order_date",
+        "end_date",
+        "start_date",
+        "id_servico",
+        "id_pessoa"
+      ],
+      "properties": {
+        "id_pedido": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Pedido",
+              "name": "Indisponibilidades",
+              "type": "Indisponibilidade"
+            }
+          ]
+        },
+        "order_date": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "end_date": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "start_date": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "x-datetime": "date"
+        },
+        "Servico": {
+          "type": "object",
+          "$ref": "#/definitions/Servico"
+        },
+        "id_servico": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "servicos",
+            "parentEntityType": "Servico",
+            "type": "Servico",
+            "principalKey": "id_servico",
+            "name": "Servico",
+            "textProperty": "designacao",
+            "navigationProperty": "Pedidos"
+          }
+        },
+        "Pessoa": {
+          "type": "object",
+          "$ref": "#/definitions/Pessoa"
+        },
+        "id_pessoa": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "pessoa",
+            "parentEntityType": "Pessoa",
+            "type": "Pessoa",
+            "principalKey": "id_pessoa",
+            "name": "Pessoa",
+            "textProperty": "nome",
+            "navigationProperty": "Pedidos"
+          }
+        },
+        "Indisponibilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Indisponibilidade"
+          }
+        }
+      }
+    },
+    "Pessoa": {
+      "x-table": "dbo.pessoa",
+      "resource": "Pessoas",
+      "required": [
+        "nome",
+        "morada",
+        "email",
+        "id_instituicao"
+      ],
+      "properties": {
+        "id_pessoa": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Pessoa",
+              "name": "Servicos",
+              "type": "Servico"
+            },
+            {
+              "inversePropertyName": "Pessoa",
+              "name": "Pedidos",
+              "type": "Pedido"
+            }
+          ]
+        },
+        "nome": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "morada": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 100
+        },
+        "email": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "Instituico": {
+          "type": "object",
+          "$ref": "#/definitions/Instituico"
+        },
+        "id_instituicao": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "instituicoes",
+            "parentEntityType": "Instituico",
+            "type": "Instituico",
+            "principalKey": "id_instituicao",
+            "name": "Instituico",
+            "textProperty": "designacao",
+            "navigationProperty": "Pessoas"
+          }
+        },
+        "Servicos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Servico"
+          }
+        },
+        "Pedidos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pedido"
+          }
+        }
+      }
+    },
+    "Produto": {
+      "x-table": "dbo.produtos",
+      "resource": "Produtos",
+      "required": [
+        "designacao_PT",
+        "designacao_EN",
+        "nivel",
+        "tipo_produto",
+        "webpage",
+        "observacoes",
+        "custo_unitario",
+        "id_lab",
+        "id_recursos"
+      ],
+      "properties": {
+        "designacao_PT": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "designacao_EN": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "nivel": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "tipo_produto": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "webpage": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "observacoes": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 1000
+        },
+        "custo_unitario": {
+          "x-nullable": false,
+          "type": "number",
+          "format": "double"
+        },
+        "Laboratorio": {
+          "type": "object",
+          "$ref": "#/definitions/Laboratorio"
+        },
+        "id_lab": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "laboratorios",
+            "parentEntityType": "Laboratorio",
+            "type": "Laboratorio",
+            "principalKey": "id_lab",
+            "name": "Laboratorio",
+            "textProperty": "designacao",
+            "navigationProperty": "Produtos"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "Produtos"
+          }
+        }
+      }
+    },
+    "Recurso": {
+      "x-table": "dbo.recursos",
+      "resource": "Recursos",
+      "required": [],
+      "properties": {
+        "id_recursos": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Equipamentos",
+              "type": "Equipamento"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Dados",
+              "type": "Dado"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "RecursosHumanos",
+              "type": "RecursosHumano"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Formacos",
+              "type": "Formaco"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Produtos",
+              "type": "Produto"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Atribuicaos",
+              "type": "Atribuicao"
+            },
+            {
+              "inversePropertyName": "Recurso",
+              "name": "Indisponibilidades",
+              "type": "Indisponibilidade"
+            }
+          ]
+        },
+        "Equipamentos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Equipamento"
+          }
+        },
+        "Dados": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dado"
+          }
+        },
+        "RecursosHumanos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecursosHumano"
+          }
+        },
+        "Formacos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Formaco"
+          }
+        },
+        "Produtos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Produto"
+          }
+        },
+        "Atribuicaos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Atribuicao"
+          }
+        },
+        "Indisponibilidades": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Indisponibilidade"
+          }
+        }
+      }
+    },
+    "RecursosHumano": {
+      "x-table": "dbo.recursos_humanos",
+      "resource": "RecursosHumanos",
+      "required": [
+        "nome",
+        "funcao",
+        "id_lab",
+        "id_recursos"
+      ],
+      "properties": {
+        "nome": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "funcao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "Laboratorio": {
+          "type": "object",
+          "$ref": "#/definitions/Laboratorio"
+        },
+        "id_lab": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "laboratorios",
+            "parentEntityType": "Laboratorio",
+            "type": "Laboratorio",
+            "principalKey": "id_lab",
+            "name": "Laboratorio",
+            "textProperty": "designacao",
+            "navigationProperty": "RecursosHumanos"
+          }
+        },
+        "Recurso": {
+          "type": "object",
+          "$ref": "#/definitions/Recurso"
+        },
+        "id_recursos": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "recursos",
+            "parentEntityType": "Recurso",
+            "type": "Recurso",
+            "principalKey": "id_recursos",
+            "name": "Recurso",
+            "textProperty": "id_recursos",
+            "navigationProperty": "RecursosHumanos"
+          }
+        }
+      }
+    },
+    "Servico": {
+      "x-table": "dbo.servicos",
+      "resource": "Servicos",
+      "required": [
+        "designacao",
+        "supervisionador"
+      ],
+      "properties": {
+        "id_servico": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Servico",
+              "name": "Atribuicaos",
+              "type": "Atribuicao"
+            },
+            {
+              "inversePropertyName": "Servico",
+              "name": "Pedidos",
+              "type": "Pedido"
+            }
+          ]
+        },
+        "designacao": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "Pessoa": {
+          "type": "object",
+          "$ref": "#/definitions/Pessoa"
+        },
+        "supervisionador": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "pessoa",
+            "parentEntityType": "Pessoa",
+            "type": "Pessoa",
+            "principalKey": "id_pessoa",
+            "name": "Pessoa",
+            "textProperty": "nome",
+            "navigationProperty": "Servicos"
+          }
+        },
+        "Atribuicaos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Atribuicao"
+          }
+        },
+        "Pedidos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pedido"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Atribuicaos": {
+      "get": {
+        "operationId": "getAtribuicaos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Atribuicao"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createAtribuicao",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Atribuicao",
+            "schema": {
+              "$ref": "#/definitions/Atribuicao"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Atribuicao"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Dados": {
+      "get": {
+        "operationId": "getDados",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Dado"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createDado",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Dado",
+            "schema": {
+              "$ref": "#/definitions/Dado"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Dado"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Equipamentos": {
+      "get": {
+        "operationId": "getEquipamentos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Equipamento"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createEquipamento",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Equipamento",
+            "schema": {
+              "$ref": "#/definitions/Equipamento"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Equipamento"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Formacos": {
+      "get": {
+        "operationId": "getFormacos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Formaco"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createFormaco",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Formaco",
+            "schema": {
+              "$ref": "#/definitions/Formaco"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Formaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Indisponibilidades": {
+      "get": {
+        "operationId": "getIndisponibilidades",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Indisponibilidade"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createIndisponibilidade",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Indisponibilidade",
+            "schema": {
+              "$ref": "#/definitions/Indisponibilidade"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Indisponibilidade"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Instituicos": {
+      "get": {
+        "operationId": "getInstituicos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Instituico"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createInstituico",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Instituico",
+            "schema": {
+              "$ref": "#/definitions/Instituico"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Instituico"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Laboratorios": {
+      "get": {
+        "operationId": "getLaboratorios",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Laboratorio"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createLaboratorio",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Laboratorio",
+            "schema": {
+              "$ref": "#/definitions/Laboratorio"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Laboratorio"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pedidos": {
+      "get": {
+        "operationId": "getPedidos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Pedido"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPedido",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Pedido",
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pessoas": {
+      "get": {
+        "operationId": "getPessoas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Pessoa"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPessoa",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Pessoa",
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Produtos": {
+      "get": {
+        "operationId": "getProdutos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Produto"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createProduto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Recursos": {
+      "get": {
+        "operationId": "getRecursos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Recurso"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createRecurso",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Recurso",
+            "schema": {
+              "$ref": "#/definitions/Recurso"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Recurso"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/RecursosHumanos": {
+      "get": {
+        "operationId": "getRecursosHumanos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/RecursosHumano"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createRecursosHumano",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "RecursosHumano",
+            "schema": {
+              "$ref": "#/definitions/RecursosHumano"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/RecursosHumano"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Servicos": {
+      "get": {
+        "operationId": "getServicos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Servico"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createServico",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Servico",
+            "schema": {
+              "$ref": "#/definitions/Servico"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Servico"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Atribuicaos({id_atribuicao})": {
+      "delete": {
+        "operationId": "deleteAtribuicao",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_atribuicao",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAtribuicaoByid_atribuicao",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_atribuicao",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Atribuicao"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateAtribuicao",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_atribuicao",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Atribuicao",
+            "schema": {
+              "$ref": "#/definitions/Atribuicao"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelAtribuicaoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Atribuicao",
+            "schema": {
+              "$ref": "#/definitions/Atribuicao"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Dados({id_recursos})": {
+      "delete": {
+        "operationId": "deleteDado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getDadoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Dado"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateDado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Dado",
+            "schema": {
+              "$ref": "#/definitions/Dado"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelDadoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Dado",
+            "schema": {
+              "$ref": "#/definitions/Dado"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Equipamentos({id_recursos})": {
+      "delete": {
+        "operationId": "deleteEquipamento",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getEquipamentoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Equipamento"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateEquipamento",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Equipamento",
+            "schema": {
+              "$ref": "#/definitions/Equipamento"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelEquipamentoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Equipamento",
+            "schema": {
+              "$ref": "#/definitions/Equipamento"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Formacos({id_recursos})": {
+      "delete": {
+        "operationId": "deleteFormaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getFormacoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Formaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateFormaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Formaco",
+            "schema": {
+              "$ref": "#/definitions/Formaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelFormacoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Formaco",
+            "schema": {
+              "$ref": "#/definitions/Formaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Indisponibilidades(id_pedido={id_pedido},id_recursos={id_recursos})": {
+      "delete": {
+        "operationId": "deleteIndisponibilidade",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getIndisponibilidadeById_pedidoAndId_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Indisponibilidade"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateIndisponibilidade",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Indisponibilidade",
+            "schema": {
+              "$ref": "#/definitions/Indisponibilidade"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelIndisponibilidadeChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Indisponibilidade",
+            "schema": {
+              "$ref": "#/definitions/Indisponibilidade"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Instituicos({id_instituicao})": {
+      "delete": {
+        "operationId": "deleteInstituico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_instituicao",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInstituicoByid_instituicao",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_instituicao",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Instituico"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateInstituico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_instituicao",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Instituico",
+            "schema": {
+              "$ref": "#/definitions/Instituico"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelInstituicoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Instituico",
+            "schema": {
+              "$ref": "#/definitions/Instituico"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Laboratorios({id_lab})": {
+      "delete": {
+        "operationId": "deleteLaboratorio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_lab",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getLaboratorioByid_lab",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_lab",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Laboratorio"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateLaboratorio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_lab",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Laboratorio",
+            "schema": {
+              "$ref": "#/definitions/Laboratorio"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelLaboratorioChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Laboratorio",
+            "schema": {
+              "$ref": "#/definitions/Laboratorio"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pedidos({id_pedido})": {
+      "delete": {
+        "operationId": "deletePedido",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPedidoByid_pedido",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updatePedido",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pedido",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Pedido",
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelPedidoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Pedido",
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pessoas({id_pessoa})": {
+      "delete": {
+        "operationId": "deletePessoa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pessoa",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPessoaByid_pessoa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pessoa",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updatePessoa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_pessoa",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Pessoa",
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelPessoaChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Pessoa",
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Produtos({id_recursos})": {
+      "delete": {
+        "operationId": "deleteProduto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getProdutoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateProduto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelProdutoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Produto",
+            "schema": {
+              "$ref": "#/definitions/Produto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Recursos({id_recursos})": {
+      "delete": {
+        "operationId": "deleteRecurso",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getRecursoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Recurso"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateRecurso",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Recurso",
+            "schema": {
+              "$ref": "#/definitions/Recurso"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelRecursoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Recurso",
+            "schema": {
+              "$ref": "#/definitions/Recurso"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/RecursosHumanos({id_recursos})": {
+      "delete": {
+        "operationId": "deleteRecursosHumano",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getRecursosHumanoByid_recursos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/RecursosHumano"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateRecursosHumano",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_recursos",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "RecursosHumano",
+            "schema": {
+              "$ref": "#/definitions/RecursosHumano"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelRecursosHumanoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "RecursosHumano",
+            "schema": {
+              "$ref": "#/definitions/RecursosHumano"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Servicos({id_servico})": {
+      "delete": {
+        "operationId": "deleteServico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_servico",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getServicoByid_servico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_servico",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Servico"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateServico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_servico",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Servico",
+            "schema": {
+              "$ref": "#/definitions/Servico"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelServicoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Servico",
+            "schema": {
+              "$ref": "#/definitions/Servico"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/c4g",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

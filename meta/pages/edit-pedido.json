@@ -1,0 +1,399 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Order Date",
+                              "component": "order_date",
+                              "name": "order_dateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "order_date",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${pedido.order_date}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "order_dateRequiredValidator",
+                              "component": "order_date",
+                              "text": "order_date is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "End Date",
+                              "component": "end_date",
+                              "name": "end_dateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "end_date",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${pedido.end_date}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "end_dateRequiredValidator",
+                              "component": "end_date",
+                              "text": "end_date is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Start Date",
+                              "component": "start_date",
+                              "name": "start_dateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "start_date",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${pedido.start_date}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "start_dateRequiredValidator",
+                              "component": "start_date",
+                              "text": "start_date is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Servico",
+                              "component": "id_servico",
+                              "name": "id_servicoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getServicosResult}",
+                              "textProperty": "designacao",
+                              "valueProperty": "id_servico",
+                              "placeholder": "Choose Servico",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_servico",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${pedido.id_servico}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_servicoRequiredValidator",
+                              "component": "id_servico",
+                              "text": "id_servico is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Pessoa",
+                              "component": "id_pessoa",
+                              "name": "id_pessoaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getPessoasResult}",
+                              "textProperty": "nome",
+                              "valueProperty": "id_pessoa",
+                              "placeholder": "Choose Pessoa",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_pessoa",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${pedido.id_pessoa}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_pessoaRequiredValidator",
+                              "component": "id_pessoa",
+                              "text": "id_pessoa is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Pedido",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updatePedido",
+                        "parameters": [
+                          {
+                            "name": "id_pedido",
+                            "value": "${parameters.id_pedido}"
+                          },
+                          {
+                            "name": "Pedido",
+                            "value": "${pedido}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${pedido}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Pedido",
+                  "data": "${pedido}",
+                  "visible": "${pedido != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getPedidoByid_pedido",
+        "parameters": [
+          {
+            "name": "id_pedido",
+            "value": "${parameters.id_pedido}"
+          }
+        ],
+        "then": [
+          {
+            "name": "pedido",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Pedido"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getServicos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getServicosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Servico>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getPessoas",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getPessoasResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Pessoa>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Pedido",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

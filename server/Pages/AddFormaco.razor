@@ -1,0 +1,116 @@
+﻿@page "/add-formaco"
+@layout MainLayout
+@inherits C4G.Pages.AddFormacoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@formaco" Visible="@(formaco != null)" TItem="C4G.Models.C4G.Formaco" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Designacao Pt" Component="designacao_PT" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(formaco.designacao_PT)" Name="Designacao_PT">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Designacao_PT" Text="designacao_PT is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Designacao En" Component="designacao_EN" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(formaco.designacao_EN)" Name="Designacao_EN">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Designacao_EN" Text="designacao_EN is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tipo Formacao" Component="tipo_formacao" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="30" style="display: block; width: 100%" @bind-Value="@(formaco.tipo_formacao)" Name="Tipo_formacao">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Tipo_formacao" Text="tipo_formacao is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Custo Unitario" Component="custo_unitario" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(formaco.custo_unitario)" Name="Custo_unitario">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Custo_unitario" Text="custo_unitario is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Observacoes" Component="observacoes" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="1000" style="display: block; width: 100%" @bind-Value="@(formaco.observacoes)" Name="Observacoes">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Observacoes" Text="observacoes is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Laboratorio" Component="id_lab" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getLaboratoriosResult" TextProperty="designacao" ValueProperty="id_lab" Placeholder="Choose Laboratorio" style="display: block; width: 100%" @bind-Value="@(formaco.id_lab)" Name="Id_lab">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_lab" Text="id_lab is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Recurso" Component="id_recursos" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown Data="@getRecursosResult" TextProperty="id_recursos" ValueProperty="id_recursos" Placeholder="Choose Recurso" style="display: block; width: 100%" @bind-Value="@(formaco.id_recursos)" Name="Id_recursos">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="Id_recursos" Text="id_recursos is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

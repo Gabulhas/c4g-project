@@ -1,0 +1,235 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Equipamentos"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-equipamento",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getEquipamentosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "id_recursos",
+                            "value": "${event.id_recursos}"
+                          }
+                        ],
+                        "path": "edit-equipamento",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "designacao_PT",
+                      "title": "Designacao PT"
+                    },
+                    {
+                      "property": "designacao_EN",
+                      "title": "Designacao EN"
+                    },
+                    {
+                      "property": "data_registo",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Registo"
+                    },
+                    {
+                      "property": "num_registo",
+                      "title": "Num Registo"
+                    },
+                    {
+                      "property": "observacoes",
+                      "title": "Observacoes"
+                    },
+                    {
+                      "property": "foto_equipamento",
+                      "title": "Foto Equipamento"
+                    },
+                    {
+                      "property": "unidade_investigacao",
+                      "title": "Unidade Investigacao"
+                    },
+                    {
+                      "property": "marca",
+                      "title": "Marca"
+                    },
+                    {
+                      "property": "modelo",
+                      "title": "Modelo"
+                    },
+                    {
+                      "property": "num_serie",
+                      "title": "Num Serie"
+                    },
+                    {
+                      "property": "garantia",
+                      "title": "Garantia"
+                    },
+                    {
+                      "property": "tipo_uso",
+                      "title": "Tipo Uso"
+                    },
+                    {
+                      "property": "condicao_uso",
+                      "title": "Condicao Uso"
+                    },
+                    {
+                      "property": "mobilidade",
+                      "title": "Mobilidade"
+                    },
+                    {
+                      "property": "custo_unitario",
+                      "title": "Custo Unitario"
+                    },
+                    {
+                      "property": "id_lab",
+                      "sortProperty": "Laboratorio.designacao",
+                      "filterProperty": "Laboratorio.designacao",
+                      "template": "${data.Laboratorio?.designacao}",
+                      "title": "Laboratorio"
+                    },
+                    {
+                      "property": "id_recursos",
+                      "sortProperty": "Recurso.id_recursos",
+                      "filterProperty": "Recurso.id_recursos",
+                      "template": "${data.Recurso?.id_recursos}",
+                      "title": "Recurso"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Equipamento",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "c4g.deleteEquipamento",
+                                "parameters": [
+                                  {
+                                    "name": "id_recursos",
+                                    "value": "${data.id_recursos}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "C4G.Models.C4G.Equipamento"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getEquipamentos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getEquipamentosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Equipamento>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Equipamentos",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

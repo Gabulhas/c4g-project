@@ -1,0 +1,252 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Recurso",
+                              "component": "id_recursos",
+                              "name": "id_recursosLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getRecursosResult}",
+                              "textProperty": "id_recursos",
+                              "valueProperty": "id_recursos",
+                              "placeholder": "Choose Recurso",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_recursos",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${atribuicao.id_recursos}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_recursosRequiredValidator",
+                              "component": "id_recursos",
+                              "text": "id_recursos is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Servico",
+                              "component": "id_servico",
+                              "name": "id_servicoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getServicosResult}",
+                              "textProperty": "designacao",
+                              "valueProperty": "id_servico",
+                              "placeholder": "Choose Servico",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "id_servico",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${atribuicao.id_servico}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_servicoRequiredValidator",
+                              "component": "id_servico",
+                              "text": "id_servico is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Atribuicao",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateAtribuicao",
+                        "parameters": [
+                          {
+                            "name": "id_atribuicao",
+                            "value": "${parameters.id_atribuicao}"
+                          },
+                          {
+                            "name": "Atribuicao",
+                            "value": "${atribuicao}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${atribuicao}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Atribuicao",
+                  "data": "${atribuicao}",
+                  "visible": "${atribuicao != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getAtribuicaoByid_atribuicao",
+        "parameters": [
+          {
+            "name": "id_atribuicao",
+            "value": "${parameters.id_atribuicao}"
+          }
+        ],
+        "then": [
+          {
+            "name": "atribuicao",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Atribuicao"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getRecursos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getRecursosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Recurso>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getServicos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getServicosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Servico>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Atribuicao",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

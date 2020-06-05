@@ -1,0 +1,235 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Designacao",
+                              "component": "designacao",
+                              "name": "designacaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "designacao",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${servico.designacao}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "designacaoRequiredValidator",
+                              "component": "designacao",
+                              "text": "designacao is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Pessoa",
+                              "component": "supervisionador",
+                              "name": "supervisionadorLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getPessoasResult}",
+                              "textProperty": "nome",
+                              "valueProperty": "id_pessoa",
+                              "placeholder": "Choose Pessoa",
+                              "valueType": "int",
+                              "type": "dropdown",
+                              "name": "supervisionador",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${servico.supervisionador}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "supervisionadorRequiredValidator",
+                              "component": "supervisionador",
+                              "text": "supervisionador is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Servico",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "c4g.updateServico",
+                        "parameters": [
+                          {
+                            "name": "id_servico",
+                            "value": "${parameters.id_servico}"
+                          },
+                          {
+                            "name": "Servico",
+                            "value": "${servico}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${servico}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "C4G.Models.C4G.Servico",
+                  "data": "${servico}",
+                  "visible": "${servico != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "c4g.getServicoByid_servico",
+        "parameters": [
+          {
+            "name": "id_servico",
+            "value": "${parameters.id_servico}"
+          }
+        ],
+        "then": [
+          {
+            "name": "servico",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "C4G.Models.C4G.Servico"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "c4g.getPessoas",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getPessoasResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<C4G.Models.C4G.Pessoa>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Servico",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

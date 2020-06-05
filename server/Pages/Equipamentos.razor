@@ -1,0 +1,74 @@
+﻿@page "/equipamentos"
+@layout MainLayout
+@inherits C4G.Pages.EquipamentosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using C4G.Models.C4G
+@using Microsoft.AspNetCore.Identity
+@using C4G.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Equipamentos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getEquipamentosResult" TItem="C4G.Models.C4G.Equipamento" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="designacao_PT" Title="Designacao PT">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="designacao_EN" Title="Designacao EN">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="data_registo" FormatString="{0:MM/dd/yyyy}" Title="Data Registo">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="num_registo" Title="Num Registo">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="observacoes" Title="Observacoes">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="foto_equipamento" Title="Foto Equipamento">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="unidade_investigacao" Title="Unidade Investigacao">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="marca" Title="Marca">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="modelo" Title="Modelo">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="num_serie" Title="Num Serie">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="garantia" Title="Garantia">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="tipo_uso" Title="Tipo Uso">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="condicao_uso" Title="Condicao Uso">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="mobilidade" Title="Mobilidade">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="custo_unitario" Title="Custo Unitario">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="id_lab" SortProperty="Laboratorio.designacao" FilterProperty="Laboratorio.designacao" Title="Laboratorio">
+              <Template Context="data">
+              @(data.Laboratorio?.designacao)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Property="id_recursos" SortProperty="Recurso.id_recursos" FilterProperty="Recurso.id_recursos" Title="Recurso">
+              <Template Context="data">
+              @(data.Recurso?.id_recursos)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="C4G.Models.C4G.Equipamento" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="c4GModelsC4GEquipamento">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, c4GModelsC4GEquipamento))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
