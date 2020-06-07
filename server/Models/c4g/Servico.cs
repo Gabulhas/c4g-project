@@ -9,7 +9,6 @@ namespace C4G.Models.C4G
   public partial class Servico
   {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id_servico
     {
       get;

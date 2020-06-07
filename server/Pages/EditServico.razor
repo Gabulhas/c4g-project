@@ -18,6 +18,18 @@
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
+                <RadzenLabel Text="Id Servico" Component="id_servico" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(servico.id_servico)" Name="Id_servico">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="Id_servico" Text="id_servico is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
                 <RadzenLabel Text="Designacao" Component="designacao" style="width: 100%">
                 </RadzenLabel>
               </div>

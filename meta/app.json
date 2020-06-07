@@ -29,12 +29,12 @@
     "Servicos"
   ],
   "pages": [
-    "Application Roles",
-    "Login",
-    "Register Application User",
     "Application Users",
-    "Add Application User",
+    "Login",
+    "Application Roles",
+    "Register Application User",
     "Add Application Role",
+    "Add Application User",
     "Edit Application User",
     "Profile",
     "Unauthorized",

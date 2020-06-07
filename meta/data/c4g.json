@@ -953,13 +953,13 @@
       "x-table": "dbo.servicos",
       "resource": "Servicos",
       "required": [
+        "id_servico",
         "designacao",
         "supervisionador"
       ],
       "properties": {
         "id_servico": {
           "x-key": true,
-          "x-identity": true,
           "x-nullable": false,
           "type": "integer",
           "x-navigation": [

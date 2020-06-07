@@ -27,6 +27,54 @@
                           "components": [
                             {
                               "type": "label",
+                              "text": "Id Servico",
+                              "component": "id_servico",
+                              "name": "id_servicoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "id_servico",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${servico.id_servico}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "id_servicoRequiredValidator",
+                              "component": "id_servico",
+                              "text": "id_servico is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
                               "text": "Designacao",
                               "component": "designacao",
                               "name": "designacaoLabel",
