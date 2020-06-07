@@ -472,8 +472,8 @@
     ]
   },
   "name": "Add Formaco",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

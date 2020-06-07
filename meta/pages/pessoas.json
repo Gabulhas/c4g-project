@@ -176,8 +176,8 @@
     ]
   },
   "name": "Pessoas",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

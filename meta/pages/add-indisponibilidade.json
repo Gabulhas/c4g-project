@@ -326,8 +326,8 @@
     ]
   },
   "name": "Add Indisponibilidade",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

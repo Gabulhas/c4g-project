@@ -89,6 +89,7 @@ namespace C4G.Models.C4G
     }
     public Laboratorio Laboratorio { get; set; }
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id_recursos
     {
       get;

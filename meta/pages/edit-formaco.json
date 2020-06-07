@@ -489,8 +489,8 @@
     ]
   },
   "name": "Edit Formaco",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

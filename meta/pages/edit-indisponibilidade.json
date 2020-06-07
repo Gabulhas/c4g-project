@@ -351,8 +351,8 @@
     ]
   },
   "name": "Edit Indisponibilidade",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

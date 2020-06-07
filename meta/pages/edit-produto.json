@@ -586,8 +586,8 @@
     ]
   },
   "name": "Edit Produto",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

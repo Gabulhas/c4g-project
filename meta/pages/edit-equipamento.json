@@ -286,7 +286,7 @@
                           "components": [
                             {
                               "valueType": "string",
-                              "maxLength": 50,
+                              "maxLength": 200,
                               "type": "textbox",
                               "name": "foto_equipamento",
                               "style": {
@@ -801,59 +801,6 @@
                     },
                     {
                       "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Recurso",
-                              "component": "id_recursos",
-                              "name": "id_recursosLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getRecursosResult}",
-                              "textProperty": "id_recursos",
-                              "valueProperty": "id_recursos",
-                              "placeholder": "Choose Recurso",
-                              "valueType": "int",
-                              "type": "dropdown",
-                              "name": "id_recursos",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${equipamento.id_recursos}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "id_recursosRequiredValidator",
-                              "component": "id_recursos",
-                              "text": "id_recursos is required",
-                              "style": {
-                                "position": "absolute"
-                              },
-                              "defaultValue": "0"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
                       "components": [
                         {
                           "type": "col",
@@ -976,8 +923,8 @@
     ]
   },
   "name": "Edit Equipamento",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

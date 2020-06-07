@@ -171,8 +171,8 @@
     ]
   },
   "name": "Atribuicaos",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

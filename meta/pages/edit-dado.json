@@ -489,8 +489,8 @@
     ]
   },
   "name": "Edit Dado",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

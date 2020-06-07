@@ -175,8 +175,8 @@
     ]
   },
   "name": "Recursos Humanos",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

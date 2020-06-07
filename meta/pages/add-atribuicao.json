@@ -228,8 +228,8 @@
     ]
   },
   "name": "Add Atribuicao",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

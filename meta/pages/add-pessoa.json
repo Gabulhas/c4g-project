@@ -309,8 +309,8 @@
     ]
   },
   "name": "Add Pessoa",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

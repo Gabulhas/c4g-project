@@ -176,8 +176,8 @@
     ]
   },
   "name": "Laboratorios",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

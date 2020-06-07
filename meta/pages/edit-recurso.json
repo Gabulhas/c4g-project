@@ -113,8 +113,8 @@
     ]
   },
   "name": "Edit Recurso",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

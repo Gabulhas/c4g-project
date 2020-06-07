@@ -326,8 +326,8 @@
     ]
   },
   "name": "Edit Pessoa",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

@@ -185,8 +185,8 @@
     ]
   },
   "name": "Indisponibilidades",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

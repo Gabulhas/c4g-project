@@ -228,8 +228,8 @@
     ]
   },
   "name": "Equipamentos",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

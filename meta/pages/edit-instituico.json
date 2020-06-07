@@ -211,8 +211,8 @@
     ]
   },
   "name": "Edit Instituico",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

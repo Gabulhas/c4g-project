@@ -157,8 +157,8 @@
     ]
   },
   "name": "Recursos",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

@@ -392,8 +392,8 @@
     ]
   },
   "name": "Edit Pedido",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

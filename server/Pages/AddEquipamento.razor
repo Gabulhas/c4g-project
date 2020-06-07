@@ -82,7 +82,7 @@
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(equipamento.foto_equipamento)" Name="Foto_equipamento">
+                <RadzenTextBox MaxLength="200" style="display: block; width: 100%" @bind-Value="@(equipamento.foto_equipamento)" Name="Foto_equipamento">
                 </RadzenTextBox>
                 <RadzenRequiredValidator Component="Foto_equipamento" Text="foto_equipamento is required" style="position: absolute">
                 </RadzenRequiredValidator>
@@ -205,18 +205,6 @@
                 <RadzenDropDown Data="@getLaboratoriosResult" TextProperty="designacao" ValueProperty="id_lab" Placeholder="Choose Laboratorio" style="display: block; width: 100%" @bind-Value="@(equipamento.id_lab)" Name="Id_lab">
                 </RadzenDropDown>
                 <RadzenRequiredValidator Component="Id_lab" Text="id_lab is required" style="position: absolute" DefaultValue="0">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Recurso" Component="id_recursos" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDropDown Data="@getRecursosResult" TextProperty="id_recursos" ValueProperty="id_recursos" Placeholder="Choose Recurso" style="display: block; width: 100%" @bind-Value="@(equipamento.id_recursos)" Name="Id_recursos">
-                </RadzenDropDown>
-                <RadzenRequiredValidator Component="Id_recursos" Text="id_recursos is required" style="position: absolute" DefaultValue="0">
                 </RadzenRequiredValidator>
               </div>
             </div>

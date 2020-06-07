@@ -165,8 +165,8 @@
     ]
   },
   "name": "Instituicos",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

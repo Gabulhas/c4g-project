@@ -29,6 +29,15 @@
     "Servicos"
   ],
   "pages": [
+    "Application Roles",
+    "Login",
+    "Register Application User",
+    "Application Users",
+    "Add Application User",
+    "Add Application Role",
+    "Edit Application User",
+    "Profile",
+    "Unauthorized",
     "Atribuicaos",
     "Add Atribuicao",
     "Edit Atribuicao",
@@ -67,16 +76,7 @@
     "Edit Recursos Humano",
     "Servicos",
     "Add Servico",
-    "Edit Servico",
-    "Login",
-    "Application Users",
-    "Application Roles",
-    "Register Application User",
-    "Add Application Role",
-    "Add Application User",
-    "Edit Application User",
-    "Profile",
-    "Unauthorized"
+    "Edit Servico"
   ],
   "port": 8000,
   "security": {
@@ -86,13 +86,13 @@
     "emailConfirmation": false,
     "layout": "Main",
     "loginLayout": "Login",
+    "loginPage": "Login",
     "provider": "default",
     "smtpFrom": "",
     "smtpPassword": "",
     "smtpSSL": false,
     "smtpServer": "",
-    "smtpUser": "",
-    "loginPage": "Login"
+    "smtpUser": ""
   },
   "serverLang": "cs",
   "serverPort": 5000,

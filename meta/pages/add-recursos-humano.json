@@ -326,8 +326,8 @@
     ]
   },
   "name": "Add Recursos Humano",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

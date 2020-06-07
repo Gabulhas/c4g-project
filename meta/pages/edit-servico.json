@@ -228,8 +228,8 @@
     ]
   },
   "name": "Edit Servico",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

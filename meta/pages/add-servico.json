@@ -211,8 +211,8 @@
     ]
   },
   "name": "Add Servico",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

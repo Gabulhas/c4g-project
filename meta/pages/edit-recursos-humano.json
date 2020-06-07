@@ -343,8 +343,8 @@
     ]
   },
   "name": "Edit Recursos Humano",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

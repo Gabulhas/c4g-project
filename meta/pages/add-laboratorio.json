@@ -309,8 +309,8 @@
     ]
   },
   "name": "Add Laboratorio",
-  "layout": "Main",
   "access": [
     "Authenticated"
-  ]
+  ],
+  "layout": "Main"
 }

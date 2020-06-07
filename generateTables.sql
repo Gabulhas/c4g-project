@@ -1,6 +1,6 @@
 CREATE TABLE recursos
 (
-  id_recursos INT IDENTITY NOT NULL,
+  id_recursos INT IDENTITY NOT NULL UNIQUE,
   PRIMARY KEY (id_recursos)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE equipamentos
   mobilidade VARCHAR(10) NOT NULL,
   custo_unitario FLOAT NOT NULL,
   id_lab INT NOT NULL,
-  id_recursos INT NOT NULL,
+  id_recursos INT IDENTITY NOT NULL,
   PRIMARY KEY (id_recursos),
   FOREIGN KEY (id_lab) REFERENCES laboratorios(id_lab),
   FOREIGN KEY (id_recursos) REFERENCES recursos(id_recursos)
@@ -125,7 +125,7 @@ CREATE TABLE produtos
 
 CREATE TABLE atribuicao
 (
-  id_atribuicao IDENTITY INT NOT NULL,
+  id_atribuicao INT IDENTITY NOT NULL,
   id_recursos INT NOT NULL,
   id_servico INT NOT NULL,
   PRIMARY KEY (id_atribuicao),

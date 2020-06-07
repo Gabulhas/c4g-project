@@ -150,8 +150,7 @@
         "condicao_uso",
         "mobilidade",
         "custo_unitario",
-        "id_lab",
-        "id_recursos"
+        "id_lab"
       ],
       "properties": {
         "designacao_PT": {
@@ -182,7 +181,7 @@
         "foto_equipamento": {
           "x-nullable": false,
           "type": "string",
-          "length": 50
+          "length": 200
         },
         "unidade_investigacao": {
           "x-nullable": false,
@@ -249,6 +248,7 @@
           "$ref": "#/definitions/Recurso"
         },
         "id_recursos": {
+          "x-identity": true,
           "x-nullable": false,
           "type": "integer",
           "x-key": true,
